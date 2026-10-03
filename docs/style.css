@@ -35,6 +35,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
+  padding: 1px 16px;
   background-color: var(--bg);
   background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
   background-size: 9px 9px;
