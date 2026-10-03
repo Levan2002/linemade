@@ -49,23 +49,23 @@ body {
   padding: 28px 22px 32px;
 }
 
-/* Thin crop marks in the page corners */
-.crop { position: absolute; width: 22px; height: 22px; pointer-events: none; }
+/* Thin crop marks in the page corners: two hairlines meeting the trim point with a gap */
+.crop { position: absolute; width: 26px; height: 26px; pointer-events: none; }
 .crop::before, .crop::after { content: ""; position: absolute; background: var(--mark); }
-.crop::before { width: 22px; height: 1px; }
-.crop::after { width: 1px; height: 22px; }
+.crop::before { width: 12px; height: 1px; }
+.crop::after { width: 1px; height: 12px; }
 .crop.tl { top: 0; left: 0; }
 .crop.tr { top: 0; right: 0; }
 .crop.bl { bottom: 0; left: 0; }
 .crop.br { bottom: 0; right: 0; }
-.crop.tl::before, .crop.tr::before { top: 0; }
-.crop.bl::before, .crop.br::before { bottom: 0; }
-.crop.tl::before, .crop.bl::before { left: -10px; }
-.crop.tr::before, .crop.br::before { right: -10px; }
-.crop.tl::after, .crop.tr::after { top: -10px; }
-.crop.bl::after, .crop.br::after { bottom: -10px; }
-.crop.tl::after, .crop.bl::after { left: 0; }
-.crop.tr::after, .crop.br::after { right: 0; }
+.crop.tl::before, .crop.tr::before { top: 16px; }
+.crop.bl::before, .crop.br::before { bottom: 16px; }
+.crop.tl::before, .crop.bl::before { left: 0; }
+.crop.tr::before, .crop.br::before { right: 0; }
+.crop.tl::after, .crop.tr::after { top: 0; }
+.crop.bl::after, .crop.br::after { bottom: 0; }
+.crop.tl::after, .crop.bl::after { left: 16px; }
+.crop.tr::after, .crop.br::after { right: 16px; }
 
 h1, h2, h3, .wordmark {
   font-family: ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
