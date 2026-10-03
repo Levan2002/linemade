@@ -47,7 +47,7 @@ body {
   position: relative;
   max-width: 760px;
   margin: 16px auto;
-  padding: 28px 22px 32px;
+  padding: 30px 14px 32px;
 }
 
 /* Thin crop marks in the page corners: two hairlines meeting the trim point with a gap */
@@ -100,7 +100,7 @@ a:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-ra
 .brand:hover { background: none; }
 .brand img { width: 40px; height: 40px; border-radius: 10px; }
 .wordmark { font-size: 1.4rem; text-shadow: 2px 2px 0 var(--pink); color: var(--fg); }
-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 0; }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 0; margin: 0; }
 nav li { margin: 0; }
 nav a { font-weight: 600; font-size: 0.95rem; }
 nav a[aria-current="page"] { background: var(--sun); color: var(--ink); text-decoration: none; padding: 1px 6px; border-radius: 4px; }
