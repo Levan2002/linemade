@@ -1,0 +1,199 @@
+/* Linemade support site: risograph print shop */
+:root {
+  --paper: #FBF8F1;
+  --ink: #1B1B1F;
+  --pink: #FF4F8B;
+  --sun: #FFC93C;
+  --teal: #00A99D;
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: #4A4A52;
+  --rule: rgba(27, 27, 31, 0.18);
+  --card: #FFFFFF;
+  --mark: rgba(27, 27, 31, 0.55);
+  --link: var(--ink);
+  --dot: rgba(255, 79, 139, 0.10);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141317;
+    --fg: var(--paper);
+    --muted: #C9C5BC;
+    --rule: rgba(251, 248, 241, 0.2);
+    --card: #1E1D22;
+    --mark: rgba(251, 248, 241, 0.5);
+    --link: var(--paper);
+    --dot: rgba(255, 79, 139, 0.08);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
+  background-size: 9px 9px;
+  color: var(--fg);
+  font: 17px/1.6 system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.sheet {
+  position: relative;
+  max-width: 760px;
+  margin: 16px auto;
+  padding: 28px 22px 32px;
+}
+
+/* Thin crop marks in the page corners */
+.crop { position: absolute; width: 22px; height: 22px; pointer-events: none; }
+.crop::before, .crop::after { content: ""; position: absolute; background: var(--mark); }
+.crop::before { width: 22px; height: 1px; }
+.crop::after { width: 1px; height: 22px; }
+.crop.tl { top: 0; left: 0; }
+.crop.tr { top: 0; right: 0; }
+.crop.bl { bottom: 0; left: 0; }
+.crop.br { bottom: 0; right: 0; }
+.crop.tl::before, .crop.tr::before { top: 0; }
+.crop.bl::before, .crop.br::before { bottom: 0; }
+.crop.tl::before, .crop.bl::before { left: -10px; }
+.crop.tr::before, .crop.br::before { right: -10px; }
+.crop.tl::after, .crop.tr::after { top: -10px; }
+.crop.bl::after, .crop.br::after { bottom: -10px; }
+.crop.tl::after, .crop.bl::after { left: 0; }
+.crop.tr::after, .crop.br::after { right: 0; }
+
+h1, h2, h3, .wordmark {
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-shadow: 3px 3px 0 var(--pink);
+}
+
+h1 { font-size: clamp(2.1rem, 8vw, 3.3rem); margin: 0.4em 0 0.35em; }
+h2 { font-size: clamp(1.45rem, 5vw, 1.9rem); margin: 1.8em 0 0.5em; text-shadow: 2px 2px 0 var(--pink); }
+h3 { font-size: 1.15rem; margin: 1.5em 0 0.35em; text-shadow: 1.5px 1.5px 0 var(--pink); }
+
+p, ul, ol { margin: 0 0 1em; }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0.3em 0; }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { background: var(--sun); color: var(--ink); }
+a:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 3px; }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand:hover { background: none; }
+.brand img { width: 40px; height: 40px; border-radius: 10px; }
+.wordmark { font-size: 1.4rem; text-shadow: 2px 2px 0 var(--pink); color: var(--fg); }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 0; margin: 0; }
+nav li { margin: 0; }
+nav a { font-weight: 600; font-size: 0.95rem; }
+nav a[aria-current="page"] { background: var(--sun); color: var(--ink); text-decoration: none; padding: 1px 6px; border-radius: 4px; }
+
+/* Hero */
+.hero { text-align: left; padding-top: 18px; }
+.hero .icon { width: 128px; height: 128px; border-radius: 28px; box-shadow: 5px 5px 0 var(--teal); display: block; }
+.lede { font-size: 1.2rem; color: var(--fg); max-width: 36em; }
+.stamp {
+  display: inline-block;
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  background: var(--sun);
+  color: var(--ink);
+  padding: 8px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--pink);
+  transform: rotate(-1.5deg);
+  margin: 4px 0 8px;
+}
+
+.meta { color: var(--muted); font-size: 0.95rem; }
+
+/* Cards */
+.grid { display: grid; gap: 14px; grid-template-columns: 1fr; margin: 1em 0; }
+@media (min-width: 620px) { .grid { grid-template-columns: 1fr 1fr; } }
+.card {
+  background: var(--card);
+  border: 2px solid var(--fg);
+  border-radius: 14px;
+  padding: 16px 18px 6px;
+  box-shadow: 4px 4px 0 var(--teal);
+}
+.card:nth-child(3n+2) { box-shadow: 4px 4px 0 var(--pink); }
+.card:nth-child(3n) { box-shadow: 4px 4px 0 var(--sun); }
+.card h3 { margin-top: 0.1em; }
+
+.chip {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: var(--pink);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 1px 9px;
+  vertical-align: 0.15em;
+  text-shadow: none;
+  letter-spacing: 0.02em;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; font-size: 0.98rem; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 800; }
+
+.note {
+  border-left: 5px solid var(--teal);
+  background: var(--card);
+  padding: 12px 16px;
+  border-radius: 0 10px 10px 0;
+  margin: 1em 0 1.2em;
+}
+
+details { border-bottom: 1px solid var(--rule); padding: 10px 0; }
+summary { cursor: pointer; font-weight: 700; }
+details p { margin: 0.6em 0 0.3em; }
+
+pre.license {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font: 0.86rem/1.5 ui-monospace, "SF Mono", Menlo, monospace;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.toc { columns: 2 12em; column-gap: 24px; padding-left: 1.2em; }
+
+footer {
+  margin-top: 3em;
+  padding-top: 14px;
+  border-top: 2px dashed var(--rule);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+footer p { margin: 0.3em 0; }
+
+@media (min-width: 620px) {
+  .sheet { margin: 28px auto; padding: 40px 44px 44px; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .crop { display: none; }
+}
